@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+	<ui:composition template="./template.xhtml">
+		<ui:define name="title">Search Results</ui:define>
+		<ui:define name="content">
+			<table>
+				<c:forEach var="book" items="${results}">
+				<tr class="alignTop alignLeft">
+					<td class="shrink">
+						<h:graphicImage name="images/cover-art/${book.coverArt}" class="bookThumbnail" />
+					</td>
+					<td>
+						<h4><a href="./bookDetails?id=${book.id}">${book.title}</a></h4>
+						<span>by ${book.authorFName} ${book.authorLName}</span>
+						<br />
+						<span>&dollar;${book.price}</span>
+					</td>
+				</tr>
+				</c:forEach>
+			</table>
+		</ui:define>
+	</ui:composition>
+</html>

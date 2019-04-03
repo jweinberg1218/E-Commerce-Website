@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+	<ui:composition template="./template.xhtml">
+		<ui:define name="title">Login</ui:define>
+		<ui:define name="content">
+			${error}
+			<form action="./login" method="post">
+				<table class="alignCenter">
+					<tr>
+						<td class="alignRight">Email Address:</td>
+						<td><input name="emailAddress" type="text" /></td>
+					</tr>
+					<tr>
+						<td class="alignRight">Password:</td>
+						<td><input name="password" type="password" /></td>
+					</tr>
+					<tr>
+						<td class="alignRight" colspan="2">
+							<input name="submit" type="submit" value="Login" />
+							<input name="reset" type="reset" value="Clear" />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</ui:define>
+	</ui:composition>
+</html>

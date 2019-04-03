@@ -1,0 +1,93 @@
+body {
+    background-color: #B0C4DE;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #00008B;
+}
+
+small {
+    color: #00008B;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    display: inline-block;
+}
+
+a.menuItem:link, a.menuItem:visited {
+    display: block;
+    width: 120px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #0000FF;
+    text-align: center;
+    padding: 4px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+a.menuItem:hover, a.menuItem:active {
+    background-color: #00008B;
+}
+
+div#header {
+    text-align: center;
+}
+
+div#content {
+    text-align: center;
+    width: 75%;
+    margin: 0 auto;
+}
+
+div#footer {
+    text-align: center;
+}
+
+.alignLeft {
+	text-align: left;
+}
+
+.alignCenter {
+	text-align: center;
+}
+
+.alignRight {
+	text-align: right;
+}
+
+.alignTop {
+	vertical-align: top;
+}
+
+.alignBottom {
+	vertical-align: bottom;
+}
+
+img#book {
+	height: 500px;
+}
+
+table.alignCenter {
+	margin: 0 auto;
+}
+
+td.shrink {
+	width: 1%;
+}
+
+img.bookThumbnail {
+	height: 200px;
+}
+
+input.qty {
+    width: 20px;
+    text-align: center;
+}

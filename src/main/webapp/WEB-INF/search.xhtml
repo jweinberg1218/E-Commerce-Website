@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+	<ui:composition template="./template.xhtml">
+		<ui:define name="title">Search</ui:define>
+		<ui:define name="content">
+			<form action="./searchResults" method="get">
+				<table class="alignCenter">
+					<tr>
+						<td>Search Query:</td>
+						<td><input name="searchQuery" type="text" /></td>
+						<td>
+							<select name="filterCriteria">
+								<option value=""></option>
+								<option value="author">Author</option>
+								<option value="volumeTitle">Volume Title</option>
+								<option value="isbn">ISBN</option>
+							</select>
+						</td>
+						<td>
+							<select name="sortOrder">
+								<option value="asc">A-Z</option>
+								<option value="desc">Z-A</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="alignRight" colspan="4">
+							<input name="submit" type="submit" value="Search" />
+							<input name="reset" type="reset" value="Clear" />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</ui:define>
+	</ui:composition>
+</html>

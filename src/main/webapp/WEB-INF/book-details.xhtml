@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+	<ui:composition template="./template.xhtml">
+		<ui:define name="title">Book Details: ${book.title}</ui:define>
+		<ui:define name="content">
+			<table class="alignCenter">
+				<tr class="alignTop alignLeft">
+					<td><h:graphicImage name="images/cover-art/#{book.coverArt}" id="book" /></td>
+					<td>
+						<h4>${book.title}</h4>
+						<h5>by ${book.authorFName} ${book.authorLName}</h5>
+						<span>&dollar;${book.price}</span>
+						<br />
+						<br />
+						<form action="./cart" method="post">
+							<input name="addBook" type="hidden" value="${book.id}" />
+							<input name="submit" type="submit" value="Add to Cart" />
+						</form>
+					</td>
+				</tr>
+			</table>
+			<dl class="alignLeft">
+				<dt>Description</dt>
+				<dd>${book.description}</dd>
+				<dt>Edition</dt>
+				<dd>${book.edition}</dd>
+				<dt>ISBN</dt>
+				<dd>${book.isbn}</dd>
+			</dl>
+		</ui:define>
+	</ui:composition>
+</html>
