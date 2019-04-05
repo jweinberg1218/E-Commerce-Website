@@ -5,48 +5,48 @@ USE jasonsbookstore;
 CREATE TABLE books (
 	id int auto_increment, 
 	isbn char(13), 
-    title varchar(50), 
-    description varchar(200), 
-    authorfname varchar(30), 
-    authorlname varchar(30), 
-    coverart varchar(50), 
-    edition varchar(3),
-    price real, 
-    PRIMARY KEY(id)
+	title varchar(50), 
+	description varchar(200), 
+	authorfname varchar(30), 
+	authorlname varchar(30), 
+	coverart varchar(50), 
+	edition varchar(3),
+	price real, 
+	PRIMARY KEY(id)
 );
 
 CREATE TABLE users (
 	id int auto_increment, 
-    emailaddress varchar(50), 
-    password varchar(30), 
-    firstname varchar(30), 
-    lastname varchar(30), 
-    streetaddress varchar(50), 
-    city varchar(30), 
-    state char(2), 
-    zipcode char(5), 
-    PRIMARY KEY(id)
+	emailaddress varchar(50), 
+	password varchar(30), 
+	firstname varchar(30), 
+	lastname varchar(30), 
+	streetaddress varchar(50), 
+	city varchar(30), 
+	state char(2), 
+	zipcode char(5), 
+	PRIMARY KEY(id)
 );
 
 CREATE TABLE orders (
 	id int auto_increment, 
-    user_id int, 
-    totalprice float, 
-    dateOrdered timestamp, 
+	user_id int, 
+	totalprice float, 
+	dateOrdered timestamp, 
 	PRIMARY KEY(id), 
-    FOREIGN KEY(user_id) REFERENCES users(id)
+	FOREIGN KEY(user_id) REFERENCES users(id)
 );
 
 CREATE TABLE orderitems (
 	id int auto_increment, 
-    order_id int, 
-    book_id int, 
-    qty int, 
-    itemprice float, 
-    totalprice float, 
+	order_id int, 
+	book_id int, 
+	qty int, 
+	itemprice float, 
+	totalprice float, 
 	PRIMARY KEY(id), 
-    FOREIGN KEY(order_id) REFERENCES orders(id), 
-    FOREIGN KEY(book_id) REFERENCES books(id)
+	FOREIGN KEY(order_id) REFERENCES orders(id), 
+	FOREIGN KEY(book_id) REFERENCES books(id)
 );
 
 INSERT INTO books (isbn, title, coverart, price) 
