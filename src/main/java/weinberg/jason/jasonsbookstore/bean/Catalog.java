@@ -3,12 +3,10 @@ package weinberg.jason.jasonsbookstore.bean;
 import java.io.*;
 import java.util.*;
 
-import javax.enterprise.context.*;
 import javax.persistence.*;
 
 import weinberg.jason.jasonsbookstore.model.*;
 
-@SessionScoped
 public class Catalog implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

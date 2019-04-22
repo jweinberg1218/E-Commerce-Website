@@ -10,11 +10,11 @@ import javax.servlet.http.*;
  * Servlet implementation class Search
  */
 @WebServlet("/search")
-public class Search extends HttpServlet {
+public class Search extends AbstractServlet {
 	private static final long serialVersionUID = 1L;
 	
     /**
-     * @see HttpServlet#HttpServlet()
+     * @see AbstractServlet#AbstractServlet()
      */
     public Search() {
         super();

@@ -3,10 +3,11 @@ package weinberg.jason.jasonsbookstore;
 import java.io.*;
 import java.util.*;
 
-import javax.inject.*;
 import javax.servlet.*;
 import javax.servlet.annotation.*;
 import javax.servlet.http.*;
+
+import org.springframework.beans.factory.annotation.*;
 
 import weinberg.jason.jasonsbookstore.bean.*;
 import weinberg.jason.jasonsbookstore.model.*;
@@ -15,14 +16,14 @@ import weinberg.jason.jasonsbookstore.model.*;
  * Servlet implementation class Orders
  */
 @WebServlet("/orders")
-public class Orders extends HttpServlet {
+public class Orders extends AbstractServlet {
 	private static final long serialVersionUID = 1L;
 	
-	@Inject
+	@Autowired
 	private Account account;
 	
     /**
-     * @see HttpServlet#HttpServlet()
+     * @see AbstractServlet#AbstractServlet()
      */
     public Orders() {
         super();

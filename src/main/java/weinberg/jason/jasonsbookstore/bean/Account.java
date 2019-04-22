@@ -3,14 +3,13 @@ package weinberg.jason.jasonsbookstore.bean;
 import java.io.*;
 import java.util.*;
 
-import javax.enterprise.context.*;
-import javax.inject.*;
 import javax.persistence.*;
-import javax.transaction.*;
+
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.transaction.annotation.*;
 
 import weinberg.jason.jasonsbookstore.model.*;
 
-@SessionScoped
 public class Account implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -18,7 +17,7 @@ public class Account implements Serializable {
 	@PersistenceContext(unitName = "jasonsbookstoreDB")
 	private EntityManager entityManager;
 	
-	@Inject
+	@Autowired
 	private Cart cart;
 	
 	private User user;

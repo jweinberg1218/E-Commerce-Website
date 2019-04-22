@@ -10,11 +10,11 @@ import javax.servlet.http.*;
  * Servlet implementation class Index
  */
 @WebServlet("/index")
-public class Index extends HttpServlet {
+public class Index extends AbstractServlet {
 	private static final long serialVersionUID = 1L;
 	
     /**
-     * @see HttpServlet#HttpServlet()
+     * @see AbstractServlet#AbstractServlet()
      */
     public Index() {
         super();

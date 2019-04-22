@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<beans xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_2_0.xsd"
-	bean-discovery-mode="all" version="2.0">
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+	<context:annotation-config />
+	
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="jasonsbookstoreDB" />
+	</bean>
+	
+	<bean id="account" class="weinberg.jason.jasonsbookstore.bean.Account" scope="session" />
+	<bean id="cart" class="weinberg.jason.jasonsbookstore.bean.Cart" scope="session" />
+	<bean id="catalog" class="weinberg.jason.jasonsbookstore.bean.Catalog" scope="session" />
+	
+	<tx:annotation-driven />
+	<tx:jta-transaction-manager />
 </beans>

@@ -2,10 +2,11 @@ package weinberg.jason.jasonsbookstore;
 
 import java.io.*;
 
-import javax.inject.*;
 import javax.servlet.*;
 import javax.servlet.annotation.*;
 import javax.servlet.http.*;
+
+import org.springframework.beans.factory.annotation.*;
 
 import weinberg.jason.jasonsbookstore.bean.*;
 import weinberg.jason.jasonsbookstore.model.*;
@@ -14,14 +15,14 @@ import weinberg.jason.jasonsbookstore.model.*;
  * Servlet implementation class Login
  */
 @WebServlet("/login")
-public class Login extends HttpServlet {
+public class Login extends AbstractServlet {
 	private static final long serialVersionUID = 1L;
 	
-	@Inject
+	@Autowired
 	private Account account;
 	
     /**
-     * @see HttpServlet#HttpServlet()
+     * @see AbstractServlet#AbstractServlet()
      */
     public Login() {
         super();
