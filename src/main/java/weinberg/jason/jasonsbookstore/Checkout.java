@@ -21,12 +21,12 @@ public class Checkout extends AbstractServlet {
 	@Autowired
 	private Account account;
 	
-    /**
-     * @see AbstractServlet#AbstractServlet()
-     */
-    public Checkout() {
-        super();
-    }
+	/**
+	 * @see AbstractServlet#AbstractServlet()
+	 */
+	public Checkout() {
+		super();
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
