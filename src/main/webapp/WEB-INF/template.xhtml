@@ -12,6 +12,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<h:outputStylesheet name="css/stylesheet.css" />
 		<title>Jason's Bookstore - <ui:insert name="title">Untitled</ui:insert></title>
+		<ui:insert name="script"></ui:insert>
 	</h:head>
 
 	<h:body>
@@ -20,22 +21,22 @@
 			<h1>Jason's Bookstore</h1>
 			<ul>
 				<li><a href="./index" class="menuItem">Home</a></li>
-				<li><a href="./login" class="menuItem">Login</a></li>
-				<li><a href="./register" class="menuItem">Register</a></li>
 				<li><a href="./search" class="menuItem">Search</a></li>
-				<li><a href="./cart" class="menuItem">Cart</a></li>
+				<li><a href="./browseAll" class="menuItem">Browse All</a></li>
+				<li><a href="./orders" class="menuItem">My Orders</a></li>
+				<li><a href="./cart" class="menuItem">My Cart</a></li>
 			</ul>
 			<p>
-				<c:if test="${user == null}">
+				<c:if test="#{account.user == null}">
 				<span>
 					Welcome, Guest!<br />
 					<a href="./login">Login</a> | <a href="./register">Register</a>
 				</span>
 				</c:if>
-				<c:if test="${user != null}">
+				<c:if test="#{account.user != null}">
 				<span>
-					Welcome back, ${user.firstName}!<br />
-					<a href="#">User Account</a> | <a href="#">Log Out</a>
+					Welcome back, #{account.user.firstName}!<br />
+					<a href="./editAccount">Edit Account</a> | <a href="./logout">Log Out</a>
 				</span>
 				</c:if>
 			</p>

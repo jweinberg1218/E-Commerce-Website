@@ -1,7 +1,6 @@
 package weinberg.jason.jasonsbookstore;
 
 import java.io.*;
-import java.util.*;
 
 import javax.servlet.*;
 import javax.servlet.annotation.*;
@@ -10,7 +9,6 @@ import javax.servlet.http.*;
 import org.springframework.beans.factory.annotation.*;
 
 import weinberg.jason.jasonsbookstore.bean.*;
-import weinberg.jason.jasonsbookstore.model.*;
 
 /**
  * Servlet implementation class SearchResults
@@ -21,6 +19,9 @@ public class SearchResults extends AbstractServlet {
 	
 	@Autowired
 	private Catalog catalog;
+	
+	@Autowired
+	private Result result;
 	
     /**
      * @see AbstractServlet#AbstractServlet()
@@ -37,10 +38,7 @@ public class SearchResults extends AbstractServlet {
 		String filterCriteria = request.getParameter("filterCriteria");
 		String sortOrder = request.getParameter("sortOrder");
 		
-		List<Book> results = catalog.search(searchQuery, filterCriteria, sortOrder);
-		
-		HttpSession httpSession = request.getSession();
-		httpSession.setAttribute("results", results);
+		result.setBooks(catalog.search(searchQuery, filterCriteria, sortOrder));
 		
 		request.getRequestDispatcher("/WEB-INF/search-results.xhtml").forward(request, response);
 	}

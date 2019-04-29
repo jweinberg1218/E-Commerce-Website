@@ -9,7 +9,6 @@ import javax.servlet.http.*;
 import org.springframework.beans.factory.annotation.*;
 
 import weinberg.jason.jasonsbookstore.bean.*;
-import weinberg.jason.jasonsbookstore.model.*;
 
 /**
  * Servlet implementation class BookDetails
@@ -20,6 +19,9 @@ public class BookDetails extends AbstractServlet {
 	
 	@Autowired
 	private Catalog catalog;
+	
+	@Autowired
+	private Result result;
 	
     /**
      * @see AbstractServlet#AbstractServlet()
@@ -34,10 +36,7 @@ public class BookDetails extends AbstractServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if (request.getParameter("id") != null) {
 			int bookId = Integer.parseInt(request.getParameter("id"));
-			
-			Book book = catalog.find(bookId);
-			
-			request.setAttribute("book", book);
+			result.setBook(catalog.findBook(bookId));
 		}
 		
 		request.getRequestDispatcher("/WEB-INF/book-details.xhtml").forward(request, response);

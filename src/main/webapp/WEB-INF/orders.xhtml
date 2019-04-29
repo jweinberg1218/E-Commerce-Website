@@ -12,12 +12,12 @@
 		<ui:define name="title">Orders</ui:define>
 		<ui:define name="content">
 			<table>
-				<c:forEach var="order" items="${orders}">
+				<c:forEach var="order" items="#{result.orders}">
 				<tr class="alignTop alignLeft">
 					<td>
-						<a href="./orderDetails?id=${order.id}">${order.dateOrdered}</a>
+						<a href="./orderDetails?id=#{order.id}">#{order.dateOrdered}</a>
 					</td>
-					<td class="shrink">&dollar;${order.totalPrice}</td>
+					<td class="shrink">&dollar;#{order.totalPrice}</td>
 				</tr>
 				</c:forEach>
 			</table>

@@ -9,7 +9,6 @@ import javax.servlet.http.*;
 import org.springframework.beans.factory.annotation.*;
 
 import weinberg.jason.jasonsbookstore.bean.*;
-import weinberg.jason.jasonsbookstore.model.*;
 
 /**
  * Servlet implementation class Checkout
@@ -21,12 +20,15 @@ public class Checkout extends AbstractServlet {
 	@Autowired
 	private Account account;
 	
-    /**
-     * @see AbstractServlet#AbstractServlet()
-     */
-    public Checkout() {
-        super();
-    }
+	@Autowired
+	private Result result;
+	
+	/**
+	 * @see AbstractServlet#AbstractServlet()
+	 */
+	public Checkout() {
+		super();
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,9 +41,7 @@ public class Checkout extends AbstractServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Order order = account.createOrder();
-		
-		request.setAttribute("order", order);
+		result.setOrder(account.createOrder());
 		
 		doGet(request, response);
 	}

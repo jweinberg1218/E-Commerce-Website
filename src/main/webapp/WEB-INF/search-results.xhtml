@@ -12,16 +12,16 @@
 		<ui:define name="title">Search Results</ui:define>
 		<ui:define name="content">
 			<table>
-				<c:forEach var="book" items="${results}">
+				<c:forEach var="book" items="#{result.books}">
 				<tr class="alignTop alignLeft">
 					<td class="shrink">
-						<h:graphicImage name="images/cover-art/${book.coverArt}" class="bookThumbnail" />
+						<h:graphicImage name="images/cover-art/#{book.coverArt}" class="bookThumbnail" />
 					</td>
 					<td>
-						<h4><a href="./bookDetails?id=${book.id}">${book.title}</a></h4>
-						<span>by ${book.authorFName} ${book.authorLName}</span>
+						<h4><a href="./bookDetails?id=#{book.id}">#{book.title}</a></h4>
+						<span>by #{book.authorFName} #{book.authorLName}</span>
 						<br />
-						<span>&dollar;${book.price}</span>
+						<span>&dollar;#{book.price}</span>
 					</td>
 				</tr>
 				</c:forEach>

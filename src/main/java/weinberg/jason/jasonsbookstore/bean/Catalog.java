@@ -16,20 +16,20 @@ public class Catalog implements Serializable {
 	
 	public Catalog() {}
 	
-	public Book find(int bookId) {
+	public Book findBook(int bookId) {
 		Book book = entityManager.find(Book.class, bookId);
 		
 		return book;
 	}
 	
-	public List<Book> findAll() {
+	public List<Book> findAllBooks() {
 		List<Book> books = entityManager.createQuery("SELECT b FROM Book b", Book.class).getResultList();
 		
 		return books;
 	}
 	
 	public List<Book> search(String searchQuery, String filterCriteria, String sortOrder) {
-		List<Book> books = entityManager.createQuery("SELECT b FROM Book b", Book.class).getResultList();
+		List<Book> books = findAllBooks();
 		filter(books, searchQuery, filterCriteria);
 		sort(books, sortOrder);
 		

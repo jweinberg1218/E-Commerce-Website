@@ -17,6 +17,7 @@
 	<bean id="account" class="weinberg.jason.jasonsbookstore.bean.Account" scope="session" />
 	<bean id="cart" class="weinberg.jason.jasonsbookstore.bean.Cart" scope="session" />
 	<bean id="catalog" class="weinberg.jason.jasonsbookstore.bean.Catalog" scope="session" />
+	<bean id="result" class="weinberg.jason.jasonsbookstore.bean.Result" scope="session" />
 	
 	<tx:annotation-driven />
 	<tx:jta-transaction-manager />

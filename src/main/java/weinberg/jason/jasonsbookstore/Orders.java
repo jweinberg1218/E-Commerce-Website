@@ -1,7 +1,6 @@
 package weinberg.jason.jasonsbookstore;
 
 import java.io.*;
-import java.util.*;
 
 import javax.servlet.*;
 import javax.servlet.annotation.*;
@@ -10,7 +9,6 @@ import javax.servlet.http.*;
 import org.springframework.beans.factory.annotation.*;
 
 import weinberg.jason.jasonsbookstore.bean.*;
-import weinberg.jason.jasonsbookstore.model.*;
 
 /**
  * Servlet implementation class Orders
@@ -21,6 +19,9 @@ public class Orders extends AbstractServlet {
 	
 	@Autowired
 	private Account account;
+	
+	@Autowired
+	private Result result;
 	
     /**
      * @see AbstractServlet#AbstractServlet()
@@ -33,9 +34,7 @@ public class Orders extends AbstractServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Order> orders = account.getAllOrders();
-		
-		request.setAttribute("orders", orders);
+		result.setOrders(account.findAllOrders());
 		
 		request.getRequestDispatcher("/WEB-INF/orders.xhtml").forward(request, response);
 	}

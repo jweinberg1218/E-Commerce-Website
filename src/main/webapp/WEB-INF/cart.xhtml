@@ -11,7 +11,7 @@
 	<ui:composition template="./template.xhtml">
 		<ui:define name="title">Cart</ui:define>
 		<ui:define name="content">
-			<span>There are currently <strong>${totalItems}</strong> items in your cart.</span>
+			<span>There are currently <strong>#{totalItems}</strong> items in your cart.</span>
 			<form action="./cart" method="post">
 				<div class="alignLeft">
 					<input name="update" type="submit" value="Update Item Quantity" />
@@ -19,21 +19,22 @@
 				</div>
 				<br />
 				<table>
-					<c:forEach var="item" items="${items}">
+					<c:forEach var="item" items="#{result.orderItems}">
 					<tr class="alignTop alignLeft">
 						<td class="shrink">
-							<input name="booksToRemove" type="checkbox" value="${item.book.id}" />
+							<input name="booksToRemove" type="checkbox" value="#{item.book.id}" />
 						</td>
 						<td class="shrink">
-							<h:graphicImage name="images/cover-art/${item.book.coverArt}" class="bookThumbnail" />
+							<h:graphicImage name="images/cover-art/#{item.book.coverArt}" class="bookThumbnail" />
 						</td>
 						<td>
-							<a href="./bookDetails?id=${item.book.id}">${item.book.title}</a>
+							<a href="./bookDetails?id=#{item.book.id}">#{item.book.title}</a>
 						</td>
-						<td class="shrink">&dollar;${item.book.price}</td>
+						<td class="shrink">&dollar;#{item.book.price}</td>
 						<td class="shrink">
-							<input name="qty:${item.book.id}" class="qty" type="text" value="${item.qty}" />
+							<input name="qty:#{item.book.id}" class="qty" type="text" value="#{item.qty}" />
 						</td>
+						<td class="shrink">&dollar;#{item.totalPrice}</td>
 					</tr>
 					</c:forEach>
 				</table>
@@ -46,9 +47,9 @@
 			<br />
 			<form action="./checkout" method="post">
 				<div class="alignRight">
-					<span>Subtotal: <strong>&dollar;${totalPrice}</strong></span><br />
+					<span>Subtotal: <strong>&dollar;#{totalPrice}</strong></span><br />
 					<span>Tax: <strong>&dollar;0.00</strong></span><br />
-					<span>Total: <strong>&dollar;${totalPrice}</strong></span><br />
+					<span>Total: <strong>&dollar;#{totalPrice}</strong></span><br />
 					<br />
 					<input name="submit" type="submit" value="Checkout" />
 				</div>

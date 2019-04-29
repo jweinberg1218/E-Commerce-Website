@@ -7,43 +7,34 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 	<ui:composition template="./template.xhtml">
-		<ui:define name="title">Register</ui:define>
+		<ui:define name="title">Edit Account</ui:define>
 		<ui:define name="content">
-			#{error}
-			<form action="./register" method="post">
+			<form action="./editAccount" method="post">
 				<table class="alignCenter">
 					<tr>
 						<td class="alignRight">Email Address:</td>
-						<td><input name="emailAddress" type="text" /></td>
-					</tr>
-					<tr>
-						<td class="alignRight">Password:</td>
-						<td><input name="password" type="password" /></td>
-					</tr>
-					<tr>
-						<td class="alignRight">Confirm Password:</td>
-						<td><input name="confirmPassword" type="password" /></td>
+						<td><input name="emailAddress" type="text" value="#{account.user.emailAddress}" disabled="disabled" /></td>
 					</tr>
 					<tr>
 						<td class="alignRight">First Name:</td>
-						<td><input name="firstName" type="text" /></td>
+						<td><input name="firstName" type="text" value="#{account.user.firstName}" /></td>
 					</tr>
 					<tr>
 						<td class="alignRight">Last Name:</td>
-						<td><input name="lastName" type="text" /></td>
+						<td><input name="lastName" type="text" value="#{account.user.lastName}" /></td>
 					</tr>
 					<tr>
 						<td class="alignRight">Street Address:</td>
-						<td><input name="streetAddress" type="text" /></td>
+						<td><input name="streetAddress" type="text" value="#{account.user.streetAddress}" /></td>
 					</tr>
 					<tr>
 						<td class="alignRight">City:</td>
-						<td><input name="city" type="text" /></td>
+						<td><input name="city" type="text" value="#{account.user.city}" /></td>
 					</tr>
 					<tr>
 						<td class="alignRight">State:</td>
 						<td>
-							<select name="state">
+							<select name="state" id="state">
 								<option value="" selected="selected"></option>
 								<option value="AL">Alabama</option>
 								<option value="AK">Alaska</option>
@@ -101,16 +92,23 @@
 					</tr>
 					<tr>
 						<td class="alignRight">Zip Code:</td>
-						<td><input name="zipCode" type="text" /></td>
+						<td><input name="zipCode" type="text" value="#{account.user.zipCode}" /></td>
 					</tr>
 					<tr>
 						<td  class="alignRight" colspan="2">
-							<input name="submit" type="submit" value="Register" />
+							<input name="submit" type="submit" value="Save Changes" />
 							<input name="reset" type="reset" value="Clear" />
 						</td>
 					</tr>
 				</table>
 			</form>
+		</ui:define>
+		<ui:define name="script">
+		<script type="text/javascript">
+		window.onload = function() {
+			document.getElementById("state").value = "#{account.user.state}";
+		};
+		</script>
 		</ui:define>
 	</ui:composition>
 </html>

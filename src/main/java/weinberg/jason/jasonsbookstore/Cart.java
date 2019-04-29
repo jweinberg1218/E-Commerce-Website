@@ -1,7 +1,6 @@
 package weinberg.jason.jasonsbookstore;
 
 import java.io.*;
-import java.util.*;
 
 import javax.servlet.*;
 import javax.servlet.annotation.*;
@@ -9,6 +8,7 @@ import javax.servlet.http.*;
 
 import org.springframework.beans.factory.annotation.*;
 
+import weinberg.jason.jasonsbookstore.bean.*;
 import weinberg.jason.jasonsbookstore.model.*;
 
 /**
@@ -21,6 +21,9 @@ public class Cart extends AbstractServlet {
 	@Autowired
 	private weinberg.jason.jasonsbookstore.bean.Cart cart;
 	
+	@Autowired
+	private Result result;
+	
     /**
      * @see AbstractServlet#AbstractServlet()
      */
@@ -32,13 +35,12 @@ public class Cart extends AbstractServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<OrderItem> items = cart.getItems();
-		request.setAttribute("items", items);
+		result.setOrderItems(cart.getItems());
 		
 		int totalItems = 0;
 		float totalPrice = 0;
 		
-		for(OrderItem item : items) {
+		for(OrderItem item : cart.getItems()) {
 			totalItems += item.getQty();
 			totalPrice += item.getItemPrice() * item.getQty();
 		}

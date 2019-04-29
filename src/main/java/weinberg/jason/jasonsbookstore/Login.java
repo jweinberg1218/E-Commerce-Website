@@ -9,7 +9,6 @@ import javax.servlet.http.*;
 import org.springframework.beans.factory.annotation.*;
 
 import weinberg.jason.jasonsbookstore.bean.*;
-import weinberg.jason.jasonsbookstore.model.*;
 
 /**
  * Servlet implementation class Login
@@ -43,10 +42,8 @@ public class Login extends AbstractServlet {
 		String password = request.getParameter("password");
 		
 		account.login(emailAddress, password);
-		User user = account.getUser();
 		
 		if(account.getUser() != null) {
-			request.getSession().setAttribute("user", user);
 			response.sendRedirect("index");
 		} else {
 			request.setAttribute("error", "Email address and/or password not valid. Please try again.");

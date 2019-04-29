@@ -12,27 +12,27 @@
 		<ui:define name="title">Order Details</ui:define>
 		<ui:define name="content">
 			<table>
-				<c:forEach var="orderItem" items="${order.orderItems}">
+				<c:forEach var="orderItem" items="#{result.order.orderItems}">
 				<tr class="alignTop alignLeft">
 					<td class="shrink">
-						<h:graphicImage name="images/cover-art/${orderItem.book.coverArt}" class="bookThumbnail" />
+						<h:graphicImage name="images/cover-art/#{orderItem.book.coverArt}" class="bookThumbnail" />
 					</td>
 					<td>
-						<a href="./bookDetails?id=${orderItem.book.id}">${orderItem.book.title}</a>
+						<a href="./bookDetails?id=#{orderItem.book.id}">#{orderItem.book.title}</a>
 					</td>
-					<td class="shrink">&dollar;${orderItem.book.price}</td>
+					<td class="shrink">&dollar;#{orderItem.book.price}</td>
 					<td class="shrink">
-						<input name="qty:${orderItem.book.id}" class="qty" type="text" value="${orderItem.qty}" />
+						<input name="qty:#{orderItem.book.id}" class="qty" type="text" value="#{orderItem.qty}" disabled="disabled" />
 					</td>
-					<td class="shrink">&dollar;${orderItem.totalPrice}</td>
+					<td class="shrink">&dollar;#{orderItem.totalPrice}</td>
 				</tr>
 				</c:forEach>
 			</table>
 			<br />
 			<div class="alignRight">
-				<span>Subtotal: <strong>&dollar;${order.totalPrice}</strong></span><br />
+				<span>Subtotal: <strong>&dollar;#{result.order.totalPrice}</strong></span><br />
 				<span>Tax: <strong>&dollar;0.00</strong></span><br />
-				<span>Total: <strong>&dollar;${order.totalPrice}</strong></span>
+				<span>Total: <strong>&dollar;#{result.order.totalPrice}</strong></span>
 			</div>
 		</ui:define>
 	</ui:composition>

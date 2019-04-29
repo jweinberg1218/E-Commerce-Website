@@ -11,14 +11,14 @@ import org.springframework.beans.factory.annotation.*;
 import weinberg.jason.jasonsbookstore.bean.*;
 
 /**
- * Servlet implementation class OrderDetails
+ * Servlet implementation class SearchResults
  */
-@WebServlet("/orderDetails")
-public class OrderDetails extends AbstractServlet {
+@WebServlet("/browseAll")
+public class BrowseAll extends AbstractServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Autowired
-	private Account account;
+	private Catalog catalog;
 	
 	@Autowired
 	private Result result;
@@ -26,7 +26,7 @@ public class OrderDetails extends AbstractServlet {
     /**
      * @see AbstractServlet#AbstractServlet()
      */
-    public OrderDetails() {
+    public BrowseAll() {
         super();
     }
 
@@ -34,18 +34,15 @@ public class OrderDetails extends AbstractServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getParameter("id") != null) {
-			int orderId = Integer.parseInt(request.getParameter("id"));
-			result.setOrder(account.findOrder(orderId));
-		}
+		result.setBooks(catalog.search("", "", "asc"));
 		
-		request.getRequestDispatcher("/WEB-INF/order-details.xhtml").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/search-results.xhtml").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		doGet(request, response);
 	}
 

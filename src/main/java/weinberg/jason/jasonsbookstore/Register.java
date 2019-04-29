@@ -9,7 +9,6 @@ import javax.servlet.http.*;
 import org.springframework.beans.factory.annotation.*;
 
 import weinberg.jason.jasonsbookstore.bean.*;
-import weinberg.jason.jasonsbookstore.model.*;
 
 /**
  * Servlet implementation class Register
@@ -58,9 +57,7 @@ public class Register extends AbstractServlet {
 		}
 		
 		account.register(emailAddress, password, firstName, lastName, streetAddress, city, state, zipCode);
-		User user = account.getUser();
 		
-		request.getSession().setAttribute("user", user);
 		response.sendRedirect("index");
 	}
 
