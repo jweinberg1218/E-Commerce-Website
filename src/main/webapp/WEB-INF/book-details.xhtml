@@ -16,7 +16,7 @@
 					<td><h:graphicImage name="images/cover-art/#{result.book.coverArt}" id="book" /></td>
 					<td>
 						<h4>#{result.book.title}</h4>
-						<h5>by #{result.book.authorFName} #{result.book.authorLName}</h5>
+						<h5>by #{result.book.author}</h5>
 						<span>
 							<h:outputText value="#{result.book.price}">
 								<f:convertNumber type="currency" currencySymbol="$" locale="en_US" />

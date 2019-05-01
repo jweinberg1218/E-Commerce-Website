@@ -2,6 +2,7 @@ package weinberg.jason.jasonsbookstore.bean;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import javax.persistence.*;
 
@@ -30,32 +31,36 @@ public class Catalog implements Serializable {
 	
 	public List<Book> search(String searchQuery, String filterCriteria, String sortOrder) {
 		List<Book> books = findAllBooks();
-		filter(books, searchQuery, filterCriteria);
-		sort(books, sortOrder);
+		books = filter(books, searchQuery, filterCriteria);
+		books = sort(books, sortOrder);
 		
 		return books;
 	}
 	
-	private void filter(List<Book> books, String searchQuery, String filterCriteria) {
+	private List<Book> filter(List<Book> books, String searchQuery, String filterCriteria) {
 		switch(filterCriteria) {
-			case "author":
-				books.stream().filter(b -> b.getAuthorLName().toLowerCase().contains(searchQuery));
+			case "title":
+				books = books.stream().filter(b -> b.getTitle().toLowerCase().contains(searchQuery.toLowerCase())).collect(Collectors.toList());
 				break;
-			case "volumeTitle":
-				books.stream().filter(b -> b.getTitle().toLowerCase().contains(searchQuery));
+			case "author":
+				books = books.stream().filter(b -> b.getAuthor().toLowerCase().contains(searchQuery.toLowerCase())).collect(Collectors.toList());
 				break;
 			case "isbn":
-				books.stream().filter(b -> b.getIsbn().toLowerCase().contains(searchQuery));
+				books = books.stream().filter(b -> b.getIsbn().toLowerCase().contains(searchQuery.toLowerCase())).collect(Collectors.toList());
 		}
+		
+		return books;
 	}
 	
-	private void sort(List<Book> books, String sortOrder) {
+	private List<Book> sort(List<Book> books, String sortOrder) {
 		switch(sortOrder) {
 			case "asc":
-				books.sort((Book b1, Book b2) -> b1.getTitle().compareTo(b2.getTitle()));
+				books = books.stream().sorted((Book b1, Book b2) -> b1.getTitle().compareTo(b2.getTitle())).collect(Collectors.toList());
 				break;
 			case "desc":
-				books.sort((Book b1, Book b2) -> b2.getTitle().compareTo(b1.getTitle()));
+				books = books.stream().sorted((Book b1, Book b2) -> b2.getTitle().compareTo(b1.getTitle())).collect(Collectors.toList());
 		}
+		
+		return books;
 	}
 }

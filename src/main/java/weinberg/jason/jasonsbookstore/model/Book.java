@@ -17,8 +17,7 @@ public class Book implements Serializable {
 	private String isbn;
 	private String title;
 	private String description;
-	private String authorFName;
-	private String authorLName;
+	private String author;
 	private String coverArt;
 	private float price;
 	private String edition;
@@ -41,12 +40,8 @@ public class Book implements Serializable {
 		return description;
 	}
 
-	public String getAuthorFName() {
-		return authorFName;
-	}
-
-	public String getAuthorLName() {
-		return authorLName;
+	public String getAuthor() {
+		return author;
 	}
 
 	public String getCoverArt() {
@@ -77,12 +72,8 @@ public class Book implements Serializable {
 		this.description = description;
 	}
 
-	public void setAuthorFName(String authorFName) {
-		this.authorFName = authorFName;
-	}
-
-	public void setAuthorLName(String authorLName) {
-		this.authorLName = authorLName;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
 	public void setCoverArt(String coverArt) {
