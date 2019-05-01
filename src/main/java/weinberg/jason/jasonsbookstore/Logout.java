@@ -33,7 +33,7 @@ public class Logout extends AbstractServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		account.logout();
 		
-		request.getRequestDispatcher("/WEB-INF/login.xhtml").forward(request, response);
+		response.sendRedirect("login");
 	}
 
 	/**

@@ -44,7 +44,12 @@ public class Login extends AbstractServlet {
 		account.login(emailAddress, password);
 		
 		if(account.getUser() != null) {
-			response.sendRedirect("index");
+			String referer = request.getParameter("referer");
+			if(referer != null) {
+				response.sendRedirect(referer);
+			} else {
+				response.sendRedirect("index");
+			}
 		} else {
 			request.setAttribute("error", "Email address and/or password not valid. Please try again.");
 			doGet(request, response);

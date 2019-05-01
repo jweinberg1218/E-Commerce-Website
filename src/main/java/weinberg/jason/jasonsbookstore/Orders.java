@@ -34,9 +34,12 @@ public class Orders extends AbstractServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		result.setOrders(account.findAllOrders());
-		
-		request.getRequestDispatcher("/WEB-INF/orders.xhtml").forward(request, response);
+		if(account.getUser() != null) {
+			result.setOrders(account.findAllOrders());
+			request.getRequestDispatcher("/WEB-INF/orders.xhtml").forward(request, response);
+		} else {
+			response.sendRedirect("login?referer=orders");
+		}
 	}
 
 	/**

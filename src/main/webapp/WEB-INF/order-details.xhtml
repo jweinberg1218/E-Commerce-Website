@@ -10,7 +10,11 @@
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 	<ui:composition template="./template.xhtml">
-		<ui:define name="title">Order Details</ui:define>
+		<ui:define name="title">Order Details: 
+			<h:outputText value="#{result.order.dateOrdered}">
+				<f:convertDateTime type="both" dateStyle="long" timeStyle="long" />
+			</h:outputText>
+		</ui:define>
 		<ui:define name="content">
 			<table>
 				<c:forEach var="orderItem" items="#{result.order.orderItems}">

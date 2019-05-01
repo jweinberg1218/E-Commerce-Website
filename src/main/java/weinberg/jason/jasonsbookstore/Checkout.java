@@ -41,9 +41,12 @@ public class Checkout extends AbstractServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		result.setOrder(account.createOrder());
-		
-		doGet(request, response);
+		if(account.getUser() != null) {
+			result.setOrder(account.createOrder());
+			doGet(request, response);
+		} else {
+			response.sendRedirect("login?referer=cart");
+		}
 	}
 
 }
