@@ -2,7 +2,7 @@ package weinberg.jason.jasonsbookstore.bean;
 
 import java.io.*;
 import java.util.*;
-import java.util.stream.Collectors;
+import java.util.stream.*;
 
 import javax.persistence.*;
 
