@@ -5,6 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
@@ -20,19 +21,44 @@
 					<td>
 						<a href="./bookDetails?id=#{orderItem.book.id}">#{orderItem.book.title}</a>
 					</td>
-					<td class="shrink">&dollar;#{orderItem.book.price}</td>
+					<td class="shrink">
+						<h:outputText value="#{orderItem.book.price}">
+							<f:convertNumber type="currency" currencySymbol="$" locale="en_US" />
+						</h:outputText>
+					</td>
 					<td class="shrink">
 						<input name="qty:#{orderItem.book.id}" class="qty" type="text" value="#{orderItem.qty}" disabled="disabled" />
 					</td>
-					<td class="shrink">&dollar;#{orderItem.totalPrice}</td>
+					<td class="shrink">
+						<h:outputText value="#{orderItem.totalPrice}">
+							<f:convertNumber type="currency" currencySymbol="$" locale="en_US" />
+						</h:outputText>
+					</td>
 				</tr>
 				</c:forEach>
 			</table>
 			<br />
 			<div class="alignRight">
-				<span>Subtotal: <strong>&dollar;#{result.order.totalPrice}</strong></span><br />
-				<span>Tax: <strong>&dollar;0.00</strong></span><br />
-				<span>Total: <strong>&dollar;#{result.order.totalPrice}</strong></span>
+				<span>Subtotal: </span>
+				<strong>
+					<h:outputText value="#{result.order.totalPrice}">
+						<f:convertNumber type="currency" currencySymbol="$" locale="en_US" />
+					</h:outputText>
+				</strong>
+				<br />
+				<span>Tax: </span>
+				<strong>
+					<h:outputText value="#{0}">
+						<f:convertNumber type="currency" currencySymbol="$" locale="en_US" />
+					</h:outputText>
+				</strong>
+				<br />
+				<span>Total: </span>
+				<strong>
+					<h:outputText value="#{result.order.totalPrice}">
+						<f:convertNumber type="currency" currencySymbol="$" locale="en_US" />
+					</h:outputText>
+				</strong>
 			</div>
 		</ui:define>
 	</ui:composition>

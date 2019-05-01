@@ -23,6 +23,8 @@ public class Order implements Serializable {
 	private List<OrderItem> orderItems;
 	
 	private float totalPrice;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateOrdered;
 	
 	public Order() {}
